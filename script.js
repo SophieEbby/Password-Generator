@@ -89,13 +89,15 @@ const upperCasedCharacters = [
 ];
 
 //global variables
-const charOptions = [];
+var charOptions = [];
 const generatedPassword = '';
+  // ------------------------------------- Pseudo Code -----------------------------------
 // You can store the generatedPassword as a string and concat each character OR
 // as an array and push each character, then join once you have enough characters
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // ------------------------------------- Pseudo Code -----------------------------------
   // !Prompt for password length
   // !At least 8 characters, no more than 128 characters
   // !Conditional to check that the number that was entered is in range
@@ -111,7 +113,10 @@ function getPasswordOptions() {
   // !OR you can keep the arrays separate and generate a random number to select the array and another to select the index
 
   // !Once character sets are selected, move on to generating random characters
-  
+
+  // --------------------------------------- Code --------------------------------------------------------------
+  charOptions = []; //resets the password to blank
+
   const passwordLengthString = prompt("How many characters would you like in your password?"); //Prompt for password length
   const passwordLength = parseInt(passwordLengthString, 10); // Convert string to integer
   console.log(`${passwordLength}`); //console log the password length
