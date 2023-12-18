@@ -105,47 +105,48 @@ function getPasswordOptions() {
   // !Confirm which character sets to use
   // !If the user answers false for all, either return out of the function or call the function again
 
-  // Once they select a character set:
-  // Generate a random character for each selected character set
-  // Either push selected character sets to a mega-array of all selected characters ----EASIER TO DO!
-  // OR you can keep the arrays separate and generate a random number to select the array and another to select the index
+  // !Once they select a character set:
+  // !Generate a random character for each selected character set
+  // !Either push selected character sets to a mega-array of all selected characters ----EASIER TO DO!
+  // !OR you can keep the arrays separate and generate a random number to select the array and another to select the index
 
-  // Once character sets are selected, move on to generating random characters
-
-  const passwordLengthString = prompt("How many characters would you like in your password?");
+  // !Once character sets are selected, move on to generating random characters
+  
+  const passwordLengthString = prompt("How many characters would you like in your password?"); //Prompt for password length
   const passwordLength = parseInt(passwordLengthString, 10); // Convert string to integer
-  console.log(`${passwordLength}`);
+  console.log(`${passwordLength}`); //console log the password length
 
+  //Validate the password length is At least 8 characters, no more than 128 characters
   if (passwordLength < 8 || passwordLength > 128) {
-    confirm("Password length must be 8 Characters but less than 128 characters. Try again!")
-    generatePassword();
+    confirm("Password length must be 8 Characters but less than 128 characters. Try again!") // if password length fails then print a message  
+    generatePassword(); //recall the function generate password to start again.
   }
-  const specialBool = confirm("Would you like Special Characters in your password?");
-  console.log(`${specialBool}`);
-  const numericBool = confirm("Would you like Numeric Characters in your password?");
-  console.log(`${numericBool}`);
-  const lowerBool = confirm("Would you like Lowercase Characters in your password?");
-  console.log(`${lowerBool}`);
-  const upperBool = confirm("Would you like Uppercase Characters in your password?");
-  console.log(`${upperBool}`);
+  const specialBool = confirm("Would you like Special Characters in your password?"); //confirm if the user wants Special Chars in password
+  console.log(`${specialBool}`); //Console true or false
+  const numericBool = confirm("Would you like Numeric Characters in your password?"); //confirm if the user wants Numeric Chars in password
+  console.log(`${numericBool}`); //Console true or false
+  const lowerBool = confirm("Would you like Lowercase Characters in your password?"); //confirm if the user wants lowercase Chars in password
+  console.log(`${lowerBool}`); //Console true or false
+  const upperBool = confirm("Would you like Uppercase Characters in your password?"); //confirm if the user wants uppercase Chars in password
+  console.log(`${upperBool}`); //Console true or false
 
-  if (!specialBool && !numericBool && !lowerBool && !upperBool) {
-    confirm("At least one Character Type must be selected. Try again!")
-    generatePassword();
+  if (!specialBool && !numericBool && !lowerBool && !upperBool) { // if all char options are false 
+    confirm("At least one Character Type must be selected. Try again!") // print message
+    generatePassword(); //recall the function generate password to start again.
   }
 
-  let selectedCharSets = [];
-  if (specialBool) selectedCharSets.push(specialCharacters);
+  let selectedCharSets = []; //if any of the char options are true then push the whole array into selectedCharSets (one massive array)
+  if (specialBool) selectedCharSets.push(specialCharacters); 
   if (numericBool) selectedCharSets.push(numericCharacters);
   if (lowerBool) selectedCharSets.push(lowerCasedCharacters);
   if (upperBool) selectedCharSets.push(upperCasedCharacters);
 
-  for (let i = 0; i < passwordLength; i++) {
-    const randomCharSet = getRandom(selectedCharSets);
+  for (let i = 0; i < passwordLength; i++) { //the for loop uses the password length to generate a random set of chars from the selectedCharSets (one massive array)
+    const randomCharSet = getRandom(selectedCharSets); // call the getRandom function
     charOptions.push(getRandom(randomCharSet));
   }
 
-  console.log(`${charOptions}`);
+  console.log(`${charOptions}`); // console log the random characters
   return charOptions.join(''); // Join the array into a string and return
 }
 
