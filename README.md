@@ -19,9 +19,9 @@ Question 1 must be a number between 8 and 128. Questions 2 - 5 are true or false
 Depending on the answers will give you a random password in the textbox that says "Your Secure Password".
 
 Screenshot of the website:
+![Screenshot of Password Generator](https://github.com/SophieEbby/Password-Generator/blob/main/assets/images/Password-Generator-Screenshot.png)
 
-
-URL: 
+URL: https://sophieebby.github.io/Password-Generator/
 
 ## Credits
 
